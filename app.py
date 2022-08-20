@@ -10,6 +10,7 @@ app = Flask(__name__)
 scheduler = APScheduler()
 
 
+#repo_url = 'https://github.com/OluwafemiPatrick/metrnews.git'
 
 # A welcome message to test our server
 @app.route('/')
@@ -194,6 +195,6 @@ def getDate():
 
 if __name__ == '__main__':
 
-    scheduler.add_job(id='news', func=getCryptoNews, trigger="cron", hour=5)
+    scheduler.add_job(id='news', func=getCryptoNews, trigger="cron", hour=12)
     scheduler.start()
     app.run(threaded=True, port=5003)
