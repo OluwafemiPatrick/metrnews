@@ -10,14 +10,11 @@ app = Flask(__name__)
 scheduler = APScheduler()
 
 
-#repo_url = 'https://github.com/OluwafemiPatrick/metrnews.git'
-
 # A welcome message to test our server
 @app.route('/')
 def index():
     #res = getCryptoNews()  
-    return 'res'
-
+    return 'hello metrnews'
 
 
 # this function get crypto news from rapid api, filters the news, and put it in bula mongo database
@@ -186,7 +183,6 @@ def sendMail(title_1, title_2, title_3, link_1, link_2, link_3):
 
 
 
-
 def getDate():
     date = datetime.utcnow().date().strftime('%a %b %d')
     return date
@@ -195,6 +191,6 @@ def getDate():
 
 if __name__ == '__main__':
 
-    scheduler.add_job(id='news', func=getCryptoNews, trigger="cron", hour=12)
+    scheduler.add_job(id='news', func=getCryptoNews, trigger="cron", hour=5)
     scheduler.start()
     app.run(threaded=True, port=5003)
